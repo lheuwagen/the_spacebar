@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
+use App\Entity\Comment;
 use Doctrine\Common\Persistence\ObjectManager;
 
 class ArticleFixtures extends BaseFixture
@@ -26,7 +27,7 @@ class ArticleFixtures extends BaseFixture
 
     public function loadData(ObjectManager $manager)
     {
-        $this->createMany(Article::class, 10, function(Article $article, $count) {
+        $this->createMany(Article::class, 10, function (Article $article, $count) use ($manager) {
             $article->setTitle($this->faker->randomElement(self::$articleTitles))
                 ->setContent(<<<EOF
 Spicy **jalapeno bacon** ipsum dolor amet veniam shank in dolore. Ham hock nisi landjaeger cow,
@@ -46,7 +47,7 @@ strip steak pork belly aliquip capicola officia. Labore deserunt esse chicken lo
 cow est ribeye adipisicing. Pig hamburger pork belly enim. Do porchetta minim capicola irure pancetta chuck
 fugiat.
 EOF
-            );
+                );
 
             // publish most articles
             if ($this->faker->boolean(70)) {
@@ -55,8 +56,8 @@ EOF
 
             $article->setAuthor($this->faker->randomElement(self::$articleAuthors))
                 ->setHeartCount($this->faker->numberBetween(5, 100))
-                ->setImageFilename($this->faker->randomElement(self::$articleImages))
-            ;
+                ->setImageFilename($this->faker->randomElement(self::$articleImages));
+
         });
 
         $manager->flush();
