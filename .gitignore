@@ -13,6 +13,3 @@
 .phpunit
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
-
-workspace.xml
-.idea/workspace.xml
