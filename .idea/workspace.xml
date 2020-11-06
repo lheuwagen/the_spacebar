@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9a9eb479-af0f-4636-8a94-7af5277346c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
@@ -136,7 +139,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../own_projects/my-homepage" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -156,7 +159,7 @@
       <workItem from="1603802945651" duration="965000" />
       <workItem from="1604046856177" duration="9846000" />
       <workItem from="1604304328514" duration="56000" />
-      <workItem from="1604323281350" duration="15572000" />
+      <workItem from="1604323281350" duration="19309000" />
     </task>
     <servers />
   </component>
@@ -168,10 +171,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="782" y="233" width="412" height="638" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1604410541886" />
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604304382750">
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604649820368">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1604304382750" />
+    <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1604649820368" />
     <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1604411711018">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
