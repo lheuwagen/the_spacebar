@@ -7,11 +7,13 @@ use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class CommentAdminController extends Controller
 {
     /**
      * @Route("/admin/comment", name="comment_admin")
+     * @IsGranted ("ROLE_ADMIN")
      */
     public function index(CommentRepository $repository, Request $request, PaginatorInterface $paginator)
     {
