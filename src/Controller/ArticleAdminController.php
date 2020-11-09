@@ -29,13 +29,10 @@ class ArticleAdminController extends AbstractController
     /**
      * @Route("/admin/article/{id}/edit")
      * @param Article $article
+     * @IsGranted("MANAGE", subject="article")
      */
     public function edit(Article $article)
     {
-        if(!$this->isGranted('MANAGE', $article)){
-            throw $this->createAccessDeniedException('No access!');
-        }
-
         dd($article);
     }
 }
