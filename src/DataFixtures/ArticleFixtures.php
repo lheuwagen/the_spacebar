@@ -71,8 +71,8 @@ EOF
     public function getDependencies()
     {
         return [
-            UserFixture::class,
             TagFixture::class,
+            UserFixture::class,
         ];
     }
 }

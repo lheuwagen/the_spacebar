@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -20,25 +19,12 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
-
     use TargetPathTrait;
 
-    /**
-     * @var UserRepository
-     */
-    private UserRepository $userRepository;
-    /**
-     * @var RouterInterface
-     */
-    private RouterInterface $router;
-    /**
-     * @var CsrfTokenManagerInterface
-     */
-    private CsrfTokenManagerInterface $csrfTokenManager;
-    /**
-     * @var UserPasswordEncoderInterface
-     */
-    private UserPasswordEncoderInterface $passwordEncoder;
+    private $userRepository;
+    private $router;
+    private $csrfTokenManager;
+    private $passwordEncoder;
 
     public function __construct(UserRepository $userRepository, RouterInterface $router, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -50,6 +36,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function supports(Request $request)
     {
+        // do your work when we're POSTing to the login page
         return $request->attributes->get('_route') === 'app_login'
             && $request->isMethod('POST');
     }
@@ -77,7 +64,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             throw new InvalidCsrfTokenException();
         }
 
-        return $this->userRepository->findoneBy(['email' => $credentials['email']]);
+        return $this->userRepository->findOneBy(['email' => $credentials['email']]);
     }
 
     public function checkCredentials($credentials, UserInterface $user)
@@ -87,16 +74,8 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        /**
-         * if user tried to access a page
-         * and is sent to login page
-         * redirect to desired page
-         * after login happened successfully
-         * and the user has access to desired page
-         */
-        
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
-            new RedirectResponse($targetPath);
+            return new RedirectResponse($targetPath);
         }
 
         return new RedirectResponse($this->router->generate('app_homepage'));

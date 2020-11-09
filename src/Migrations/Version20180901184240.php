@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace DoctrineMigrations;
 
@@ -10,19 +8,14 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20201109073753 extends AbstractMigration
+final class Version20180901184240 extends AbstractMigration
 {
-    public function getDescription() : string
-    {
-        return '';
-    }
-
     public function up(Schema $schema) : void
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user ADD twitter_username VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE article DROP author');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +23,6 @@ final class Version20201109073753 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user DROP twitter_username');
+        $this->addSql('ALTER TABLE article ADD author VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci');
     }
 }

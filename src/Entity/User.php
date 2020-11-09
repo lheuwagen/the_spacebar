@@ -2,26 +2,27 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
 class User implements UserInterface
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Groups("main")
      */
     private $email;
 
@@ -32,6 +33,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("main")
      */
     private $firstName;
 
@@ -42,16 +44,17 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("main")
      */
     private $twitterUsername;
 
     /**
-     * @ORM\OneToMany(targetEntity=ApiToken::class, mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\ApiToken", mappedBy="user", orphanRemoval=true)
      */
     private $apiTokens;
 
     /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="author")
+     * @ORM\OneToMany(targetEntity="App\Entity\Article", mappedBy="author")
      */
     private $articles;
 
@@ -85,7 +88,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string)$this->email;
+        return (string) $this->email;
     }
 
     /**
@@ -165,7 +168,7 @@ class User implements UserInterface
 
     public function getAvatarUrl(int $size = null): string
     {
-        $url = "https://robohash.org/" . $this->getEmail();
+        $url = 'https://robohash.org/'.$this->getEmail();
 
         if ($size) {
             $url .= sprintf('?size=%dx%d', $size, $size);
@@ -194,7 +197,8 @@ class User implements UserInterface
 
     public function removeApiToken(ApiToken $apiToken): self
     {
-        if ($this->apiTokens->removeElement($apiToken)) {
+        if ($this->apiTokens->contains($apiToken)) {
+            $this->apiTokens->removeElement($apiToken);
             // set the owning side to null (unless already changed)
             if ($apiToken->getUser() === $this) {
                 $apiToken->setUser(null);
@@ -224,7 +228,8 @@ class User implements UserInterface
 
     public function removeArticle(Article $article): self
     {
-        if ($this->articles->removeElement($article)) {
+        if ($this->articles->contains($article)) {
+            $this->articles->removeElement($article);
             // set the owning side to null (unless already changed)
             if ($article->getAuthor() === $this) {
                 $article->setAuthor(null);

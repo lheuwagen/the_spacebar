@@ -2,17 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\ApiTokenRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ApiTokenRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ApiTokenRepository")
  */
 class ApiToken
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -28,7 +27,7 @@ class ApiToken
     private $expiresAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="apiTokens")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="apiTokens")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
@@ -60,7 +59,7 @@ class ApiToken
         return $this->user;
     }
 
-    public function isExpired():bool
+    public function isExpired(): bool
     {
         return $this->getExpiresAt() <= new \DateTime();
     }

@@ -14,10 +14,7 @@ use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 
 class ApiTokenAuthenticator extends AbstractGuardAuthenticator
 {
-    /**
-     * @var ApiTokenRepository
-     */
-    private ApiTokenRepository $apiTokenRepo;
+    private $apiTokenRepo;
 
     public function __construct(ApiTokenRepository $apiTokenRepo)
     {
@@ -26,14 +23,17 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
 
     public function supports(Request $request)
     {
-        return $request->headers->has('authorisation')
-            && 0 === strpos($request->headers->get('Authorisation'), 'Bearer ');
+        // look for header "Authorization: Bearer <token>"
+        return $request->headers->has('Authorization')
+            && 0 === strpos($request->headers->get('Authorization'), 'Bearer ');
     }
 
     public function getCredentials(Request $request)
     {
-        $authorisationHeader = $request->headers->get('Authorisation');
-        return substr($authorisationHeader, 7);
+        $authorizationHeader = $request->headers->get('Authorization');
+
+        // skip beyond "Bearer "
+        return substr($authorizationHeader, 7);
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
@@ -42,12 +42,16 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
             'token' => $credentials
         ]);
 
-        if(!$token){
-            throw new CustomUserMessageAuthenticationException('Invalid API Token');
+        if (!$token) {
+            throw new CustomUserMessageAuthenticationException(
+                'Invalid API Token'
+            );
         }
 
-        if(!$token->isExpired()){
-            throw new CustomUserMessageAuthenticationException('Token Expired');
+        if ($token->isExpired()) {
+            throw new CustomUserMessageAuthenticationException(
+                'Token expired'
+            );
         }
 
         return $token->getUser();
@@ -61,18 +65,18 @@ class ApiTokenAuthenticator extends AbstractGuardAuthenticator
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
     {
         return new JsonResponse([
-           'message' => 'WELP better luck next time!' .$exception->getMessageKey(),
-        ]);
+            'message' => $exception->getMessageKey()
+        ], 401);
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        // allow request to continue
+        // allow the request to continue
     }
 
     public function start(Request $request, AuthenticationException $authException = null)
     {
-        throw new \Exception('Not used: entry point is somewhere else');
+        throw new \Exception('Not used: entry_point from other authentication is used');
     }
 
     public function supportsRememberMe()

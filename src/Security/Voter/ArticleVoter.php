@@ -10,10 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class ArticleVoter extends Voter
 {
-    /**
-     * @var Security
-     */
-    private Security $security;
+    private $security;
 
     public function __construct(Security $security)
     {
@@ -37,16 +34,15 @@ class ArticleVoter extends Voter
             return false;
         }
 
-
-
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             case 'MANAGE':
-                if($subject->getAuthor()== $user){
+                // this is the author!
+                if ($subject->getAuthor() == $user) {
                     return true;
                 }
 
-                if($this->security->isGranted('ROLE_ADMIN_ARTICLE')){
+                if ($this->security->isGranted('ROLE_ADMIN_ARTICLE')) {
                     return true;
                 }
 

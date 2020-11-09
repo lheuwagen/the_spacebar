@@ -6,7 +6,6 @@ use App\Entity\User;
 use App\Security\LoginFormAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
@@ -16,20 +15,18 @@ class SecurityController extends AbstractController
 {
     /**
      * @Route("/login", name="app_login")
-     * @param AuthenticationUtils $authenticationUtils
-     * @return Response
      */
-
-    public function login(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils)
     {
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
+
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
-            'error' => $error
+            'error'         => $error,
         ]);
     }
 
@@ -38,21 +35,15 @@ class SecurityController extends AbstractController
      */
     public function logout()
     {
-        throw new \Exception('will be intercepted before getting here');
+        throw new \Exception('Will be intercepted before getting here');
     }
 
     /**
-     * @Route("/register",name="app_register")
-     * @param Request $request
-     * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param GuardAuthenticatorHandler $guardHandler
-     * @param LoginFormAuthenticator $formAuthenticator
-     * @return Response
+     * @Route("/register", name="app_register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $formAuthenticator)
     {
         // TODO - use Symfony forms & validation
-
         if ($request->isMethod('POST')) {
             $user = new User();
             $user->setEmail($request->request->get('email'));
