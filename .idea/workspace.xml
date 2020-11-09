@@ -7,10 +7,9 @@
     <list default="true" id="9a9eb479-af0f-4636-8a94-7af5277346c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AccountController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AccountController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixture.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CommentAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/MarkdownHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/MarkdownHelper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -165,7 +164,7 @@
       <workItem from="1603802945651" duration="965000" />
       <workItem from="1604046856177" duration="9846000" />
       <workItem from="1604304328514" duration="56000" />
-      <workItem from="1604323281350" duration="29488000" />
+      <workItem from="1604323281350" duration="30809000" />
     </task>
     <servers />
   </component>
@@ -177,6 +176,10 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="782" y="233" width="412" height="638" key="#com.intellij.ide.util.MemberChooser/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1604410541886" />
+    <state x="776" y="480" width="424" height="144" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1604908742719">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="776" y="480" width="424" height="144" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1604908742719" />
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl" timestamp="1604649820368">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
