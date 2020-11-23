@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(
  *     fields={"email"},
- *     message="I think you're already registered!"
+ *     message="I think you've already registered!"
  * )
  */
 class User implements UserInterface
