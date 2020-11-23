@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9a9eb479-af0f-4636-8a94-7af5277346c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ArticleAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ArticleAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ArticleFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ArticleFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article_admin/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article_admin/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserRegistrationFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserRegistrationFormType.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,10 +228,11 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="774" y="467" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1853.1053@67.27.1853.1053" timestamp="1605876489584" />
-    <state x="684" y="291" width="740" height="522" key="find.popup" timestamp="1604997896434">
+    <state x="684" y="291" width="740" height="522" key="find.popup" timestamp="1606119697340">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="684" y="291" width="740" height="522" key="find.popup/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1604997896434" />
+    <state x="684" y="291" width="740" height="522" key="find.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1606119697340" />
     <state x="657" y="253" key="run.anything.popup" timestamp="1605879655019">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
