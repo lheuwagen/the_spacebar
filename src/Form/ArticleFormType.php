@@ -8,6 +8,7 @@ use App\Repository\UserRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -40,9 +41,27 @@ class ArticleFormType extends AbstractType
             ])
             ->add('author', UserSelectTextType::class, [
                 'disabled' => $isEdit,
-            ]);
+            ])
+            ->add('location', ChoiceType::class, [
+                'placeholder' => 'Choose a location',
+                'choices' => [
+                    // displayed option => internal name
+                    'The Solar System' => 'solar_system',
+                    'Near a star' => 'star',
+                    'Interstellar Space' => 'interstellar_space',
+                ],
+                'required' => false,
+            ])
+            ->add('specificLocationName', ChoiceType::class, [
+                'placeholder' => 'Where exactly?',
+                'choices' => [
+                    'TODO' => 'TODO',
+                ],
+                'required' => false,
+            ])
+        ;
 
-        if($options['include_published_at']){
+        if ($options['include_published_at']) {
             $builder->add('publishedAt', null, [
                 'widget' => 'single_text',
             ]);
