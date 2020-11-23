@@ -31,20 +31,22 @@ class ArticleFormType extends AbstractType
             ->add('title', TextType::class, [
                 'help' => 'Choose something catchy!',
             ])
-            ->add('content')
-            ->add('publishedAt', null, [
+            ->add('content', null, [
+                'rows' => 15,
+            ])
+            ->
+            add('publishedAt', null, [
                 'widget' => 'single_text',
             ])
-            ->add('author', UserSelectTextType::class,[
+            ->add('author', UserSelectTextType::class, [
 
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-           'data_class' => Article::class,
+            'data_class' => Article::class,
         ]);
     }
 }
